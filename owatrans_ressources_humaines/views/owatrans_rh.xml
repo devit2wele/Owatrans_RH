@@ -1,0 +1,76 @@
+<odoo>
+    <data>
+
+        <record id="view_owatrans_holidays_status_form" model="ir.ui.view">
+            <field name="name">owatrans.holidays.status.form.inherit</field>
+            <field name="model">hr.holidays.status</field>
+            <field name="priority">1</field>
+            <field name="inherit_id" ref="hr_holidays.edit_holiday_status_form"/>
+            <field name="arch" type="xml">
+                <field name="double_validation" position ="after">
+                  <field name="delai_soumission" />
+                </field> 
+            </field>
+        </record>
+
+        <record id="action_jours_feries_locaux" model="ir.actions.act_window">
+            <field name="name">Jours fériés locaux</field>
+            <field name="res_model">owatrans_rh.ferie</field>
+            <field name='view_type'>form</field>
+            <field name='view_mode'>tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Cliquez pour enregistrer un jour férié local.
+                </p>
+            </field>
+        </record>
+
+        <record id="view_owatrans_jour_ferie_tree" model="ir.ui.view">
+            <field name="name">owatrans.jour_ferie.tree</field>
+            <field name="model">owatrans_rh.ferie</field>
+            <field name="arch" type="xml">
+                <tree string="Jours fériés locaux" editable="bottom">
+                    <field name="name" />
+                    <field name="date" />
+                    <field name="statut" />
+                    <field name="observation"/>
+                    <button name="validate" string="Valider" class="oe_highlight" type="object" icon="STOCK_APPLY"  /> 
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_owatrans_jour_ferie_form" model="ir.ui.view">
+            <field name="name">owatrans.jour_ferie.form</field>
+            <field name="model">owatrans_rh.ferie</field>
+            <field name="arch" type="xml">
+                <form string="Jours fériés locaux">
+                    <sheet>
+                        <group  col="4" colspan="4" string="Jours fériés locaux">
+                            <field name="name" />
+                            <field name="date" />
+                            <field name="statut" />
+                            <button name="validate" string="Valider" class="oe_highlight" type="object" icon="STOCK_APPLY"  /> 
+                            <newline />
+                            <field name="observation"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
+
+
+
+
+        <menuitem
+            name='Jours fériés locaux'
+            id='menu_jours_feries_locaux'
+            parent='hr.menu_human_resources_configuration'
+            action='action_jours_feries_locaux'
+            sequence='70'
+        />           
+
+    </data>
+</odoo>
