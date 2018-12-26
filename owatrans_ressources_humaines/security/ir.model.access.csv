@@ -1,3 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_owatrans_rh_ferie,access_owatrans_rh_ferie,model_owatrans_rh_ferie,,1,1,1,1
 access_owatrans_rh_fete_locale,access_owatrans_rh_fete_locale,model_owatrans_rh_fete_locale,,1,1,1,1
+access_owatrans_rh_categorie,access_owatrans_rh_categorie,model_owatrans_rh_categorie,,1,1,1,1

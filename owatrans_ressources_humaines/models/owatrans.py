@@ -24,10 +24,20 @@ import requests
 from odoo.exceptions import Warning, ValidationError
 from dateutil.relativedelta import relativedelta
 
-#Leaves Status
+
 class HrEmployee(models.Model):
     _name = 'hr.employee'
     _inherit = 'hr.employee'
+
+    firstname = fields.Char(string='Prénom')
+    statut = fields.Char(string="Statut")
+    categorie = fields.Many2one('owatrans_rh.categorie', string='Catégorie')
+    remarques = fields.Text(string='Remarques')
+
+class Categorie(models.Model):
+    _name = 'owatrans_rh.categorie'
+
+    name = fields.Char(string="Categorie")
 
 
 class hr_contract(models.Model):
@@ -35,10 +45,6 @@ class hr_contract(models.Model):
     _inherit = 'hr.contract'
     
 
-
-    _sql_constraints = [
-        ('uniq_name', 'unique(name)', "La référence du contrat existe déjà merci de choisir une autre référence!"),
-    ]
 
     @api.multi
     def send_mail_end_contract_employee(self):
@@ -57,7 +63,7 @@ class hr_contract(models.Model):
 class hr_holidays(models.Model):
     _name = 'hr.holidays.status'
     _inherit = 'hr.holidays.status'
-    
+
     delai_soumission = fields.Integer(string = "Délai de soumission(en jours)")
 
 #Holidays
@@ -188,6 +194,7 @@ class hr_holidays(models.Model):
 #JoursFériesLocaux
 class JourFeriesLocaux(models.Model):
     _name = 'owatrans_rh.ferie'
+
     name = fields.Many2one('owatrans_rh.fete_locale', string ='Intitulé', required = True)
     date = fields.Date(string='Date', required = True)
     statut = fields.Selection([('provisoire', 'Provisoire'), ('confirme', 'Confirmé'), ('revolu', 'Révolu')], readonly = True, default = 'provisoire')

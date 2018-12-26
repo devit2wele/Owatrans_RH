@@ -58,6 +58,48 @@
             </field>
         </record>
 
+        <!-- Employee -->
+        <record id="view_owatrans_employee_form" model="ir.ui.view">
+            <field name="name">hr.employee.inherit.form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+               <field name="job_id" position ="after">
+                  <field name="statut" />
+                  <field name="categorie" />
+                </field>
+                <field name="user_id" position ="after">
+                    <field name="remarques" />
+                </field>
+                
+                <xpath expr="//div[@class='oe_title']" position="replace">
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1>
+                            <field name="name" placeholder="Employee's Name"/>
+                        </h1>
+                        <label for="firstname" class="oe_edit_only"/>
+                        <h1>
+                            <field name="firstname" placeholder="Prénom de l'employé"/>
+                        </h1>
+                    </div>
+                </xpath> 
+            </field>
+        </record>
+
+
+        <!-- Catégorie -->
+        <record id="action_owatrans_rh_categorie" model="ir.actions.act_window">
+            <field name="name">Catégorie</field>
+            <field name="res_model">owatrans_rh.categorie</field>
+            <field name='view_type'>form</field>
+            <field name='view_mode'>tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Cliquez pour enregistrer un catégorie.
+                </p>
+            </field>
+        </record>
 
 
 
@@ -70,7 +112,16 @@
             parent='hr.menu_human_resources_configuration'
             action='action_jours_feries_locaux'
             sequence='70'
-        />           
+        />
+
+        <menuitem
+            name='Catégorie'
+            id='menu_owatrans_rh_categorie'
+            parent='hr.menu_human_resources_configuration'
+            action='action_owatrans_rh_categorie'
+            sequence='75'
+        />
+           
 
     </data>
 </odoo>
