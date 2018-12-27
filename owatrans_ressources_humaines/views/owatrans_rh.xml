@@ -1,6 +1,9 @@
 <odoo>
     <data>
 
+
+
+        <!-- Holidays Status -->
         <record id="view_owatrans_holidays_status_form" model="ir.ui.view">
             <field name="name">owatrans.holidays.status.form.inherit</field>
             <field name="model">hr.holidays.status</field>
@@ -13,6 +16,7 @@
             </field>
         </record>
 
+        <!-- Fériés Locaux -->
         <record id="action_jours_feries_locaux" model="ir.actions.act_window">
             <field name="name">Jours fériés locaux</field>
             <field name="res_model">owatrans_rh.ferie</field>
@@ -101,6 +105,19 @@
             </field>
         </record>
 
+        <!-- Job -->
+        <record id="action_owatrans_rh_job" model="ir.actions.act_window">
+            <field name="name">Poste</field>
+            <field name="res_model">hr.job</field>
+            <field name='view_type'>form</field>
+            <field name='view_mode'>tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Cliquez pour enregistrer un poste.
+                </p>
+            </field>
+        </record>
+
 
 
 
@@ -120,6 +137,14 @@
             parent='hr.menu_human_resources_configuration'
             action='action_owatrans_rh_categorie'
             sequence='75'
+        />
+
+        <menuitem
+            name='Poste'
+            id='menu_action_owatrans_rh_job'
+            parent='hr.menu_human_resources_configuration'
+            action='action_owatrans_rh_job'
+            sequence='80'
         />
            
 
