@@ -119,7 +119,7 @@
                 </xpath>
                 
                 <xpath expr="//field[@name='date_order']" position="replace">
-                    <field name="date_order" readonly="1" widget="date"/>
+                    <field name="date_order" widget="date"/>
                 </xpath>
                 <xpath expr="//notebook/page/field/tree/field[@name='name']" position="attributes">
                     <attribute name='string'>Désignation</attribute>
