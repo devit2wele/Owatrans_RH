@@ -6,8 +6,8 @@
             <field name="model_id" ref="purchase.model_purchase_order"/>
             <field name="subject">${object.company_id.name} Commande (Ref ${object.name or 'n/a' })</field>
             <field name="email_from">${object.create_uid.email_formatted | safe}</field>
-            <field name="email_to">awele@it4life.org</field>
-            <field name="email_cc">mouhawele@gmail.com</field>
+            <field name="email_to">ousmane_wade@hotmail.com</field>
+            <field name="email_cc">ass010.wade@gmail.com</field>
             <field name="body_html" type="html">
 <div style="margin: 0px; padding: 0px;">
     <p style="margin: 0px; padding: 0px; font-size: 13px;">
