@@ -6,6 +6,9 @@
     'depends': [
         'purchase',
     ],
+    'description': """
+        Long description of module's purpose
+    """,
     'author': 'Aliou Samba WELE',
     'website': 'www.owatrans.sn',
     'license': 'AGPL-3',
