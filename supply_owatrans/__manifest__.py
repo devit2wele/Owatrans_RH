@@ -14,9 +14,9 @@
     'license': 'AGPL-3',
     'data': [
         'views/purchase_views.xml',
-        'data/supply_owatrans_mail_template.xml',
         'report/purchase_quotation_templates.xml',
         'report/purchase_reports.xml',
+        'data/supply_owatrans_mail_template.xml',
     ],
     'demo': [
 
