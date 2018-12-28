@@ -15,6 +15,7 @@
     'data': [
         'views/purchase_views.xml',
         'report/purchase_quotation_templates.xml',
+        'report/purchase_order_templates.xml',
         'report/purchase_reports.xml',
         'data/supply_owatrans_mail_template.xml',
     ],

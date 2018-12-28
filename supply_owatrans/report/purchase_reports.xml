@@ -10,5 +10,14 @@
         file="supply_owatrans.report_owatranspurchasequotation"
     />
 
+    <report 
+        string="Owatrans Bon de Commande" 
+        id="report_owatrans_purchase_order" 
+        model="purchase.order" 
+        report_type="qweb-pdf"
+        name="supply_owatrans.report_owatranspurchaseorder" 
+        file="supply_owatrans.report_owatranspurchaseorder"
+    />
+
 
 </odoo>

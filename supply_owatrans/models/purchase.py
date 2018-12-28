@@ -17,6 +17,10 @@ class PurchaseOrder(models.Model):
         return self.env['report'].get_action(self, 'supply_owatrans.report_owatranspurchasequotation')
 
     @api.multi
+    def print_owatrans_po(self):
+        return self.env['report'].get_action(self, 'supply_owatrans.report_owatranspurchaseorder')
+
+    @api.multi
     def action_owatrans_send_rfq(self):
         '''
         This function opens a window to compose an email, with the edi purchase template message loaded by default
@@ -26,6 +30,8 @@ class PurchaseOrder(models.Model):
         try:
             if self.env.context.get('send_rfq', False):
                 template_id = ir_model_data.get_object_reference('supply_owatrans', 'email_template_edi_owatrans_purchase')[1]
+            else:
+                template_id = ir_model_data.get_object_reference('supply_owatrans', 'email_template_edi_owatrans_purchase_done')[1]
         except ValueError:
             template_id = False
         try:
@@ -56,6 +62,8 @@ class PurchaseOrder(models.Model):
         self = self.with_context(lang=lang)
         if self.state in ['draft', 'sent']:
             ctx['model_description'] = _('Demande de Prix')
+        else:
+            ctx['model_description'] = _('Bon de Commande')
 
         return {
             'name': _('Compose Email'),
