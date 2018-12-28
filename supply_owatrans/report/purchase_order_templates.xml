@@ -3,23 +3,31 @@
 <template id="supply_owatrans.report_owatranspurchaseorder_document">
     <t t-call="report.external_layout">
         <t t-set="o" t-value="o.with_context({'lang':o.partner_id.lang})"/>
-        <t t-set="address">
-            <div t-field="o.partner_id"
-            t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True, "phone_icons": True}'/>
-            <p t-if="o.partner_id.vat"><t t-esc="o.company_id.country_id.vat_label or 'Tax ID'"/>: <span t-field="o.partner_id.vat"/></p>
-        </t>
-        <t t-if="o.dest_address_id">
-            <t t-set="information_block">
-                <strong>Shipping address:</strong>
-                <div t-if="o.dest_address_id">
-                    <div t-field="o.dest_address_id"
-                        t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True, "phone_icons": True}' name="purchase_shipping_address"/>
-                </div>
-
-            </t>
-        </t>
+        
         <div class="page">
+            
             <div class="oe_structure"/>
+            <div class="row">
+                <div class="col-xs-6">
+                    <strong>Adresse de livraison:</strong>
+                    <div t-if="o.dest_address_id">
+                        <div t-field="o.dest_address_id"
+                            t-options='{"widget": "contact", "fields": ["address", "name", "phone", "fax"], "no_marker": True, "phone_icons": True}'/>
+                    </div>
+
+                    <div t-if="not o.dest_address_id and o.picking_type_id and o.picking_type_id.warehouse_id">
+                        <span t-field="o.picking_type_id.warehouse_id.name"/>
+                        <div t-field="o.picking_type_id.warehouse_id.partner_id"
+                            t-options='{"widget": "contact", "fields": ["address", "phone", "fax"], "no_marker": True, "phone_icons": True}'/>
+                    </div>
+                </div>
+                <div class="col-xs-5 col-xs-offset-1">
+                    <div t-field="o.partner_id"
+                        t-options='{"widget": "contact", "fields": ["address", "name", "phone", "fax"], "no_marker": True, "phone_icons": True}'/>
+                        <p t-if="o.partner_id.vat">VAT: <span t-field="o.partner_id.vat"/></p>
+                </div>
+            </div>
+
 
             <h2>Confirmation du Bon de commande #<span t-field="o.name"/></h2>
 
@@ -29,7 +37,7 @@
                     <p t-field="o.name" class="m-0"/>
                 </div>
                 <div t-if="o.partner_ref" class="col-3 bm-2">
-                    <strong>Votre Référence:</strong>
+                    <strong>Référence Fournisseur:</strong>
                     <p t-field="o.partner_ref" class="m-0"/>
                 </div>
                 <div t-if="o.date_order" class="col-3 bm-2">
@@ -64,11 +72,11 @@
 
             <p t-field="o.notes"/>
 
-            <div class="col-xs-4 pull-right">
+            <!-- <div class="col-xs-4 pull-right">
                 <img src='supply_owatrans/static/description/sig.png' style="margin-bottom:5px;"/><br/>
                 <span>Dr Aliou WELE</span><br/>
                 <span>Président</span>        
-            </div>
+            </div> -->
             <div class="oe_structure"/>
         </div>
     </t>
