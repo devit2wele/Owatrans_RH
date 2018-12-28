@@ -117,6 +117,23 @@
                         context="{'send_rfq':True}"
                     />
                 </xpath>
+                <xpath expr="//header/button[@name='action_rfq_send' and @states='purchase']" position="replace">
+                    <button 
+                        name="action_owatrans_send_rfq"  
+                        string="ENVOYER LA COMMANDE PAR COURRIEL" 
+                        type="object"
+                        states="purchase"
+                        context="{'send_rfq':False}"
+                    />
+                </xpath>
+                <xpath expr="//header/button[@name='action_owatrans_send_rfq' and @states='purchase']" position="after">
+                    <button 
+                        name="print_owatrans_po"  
+                        string="IMPRIMER LA COMMANDE" 
+                        type="object"
+                        states="purchase"
+                    />
+                </xpath>
                 
                 <xpath expr="//field[@name='date_order']" position="replace">
                     <field name="date_order" widget="date"/>
