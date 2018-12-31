@@ -16,5 +16,20 @@
 ]]></field>
 </record>
 
+<record id="email_template_edi_presence" model="mail.template">
+        <field name="name">Presence - Send by Email</field>
+        <field name="email_from">${object.login|safe}</field>
+        <field name="email_to">mouhawele@gmail.com</field>
+        <field name="subject">Presence</field>
+        <field name="model_id" ref="owatrans_ressources_humaines.model_owatrans_presence"/>
+        <field name="auto_delete" eval="True"/>
+        <field name="report_template" ref="report_owatrans_presence"/>
+        <field name="report_name">presence</field>
+        <field name="body_html"><![CDATA[
+
+<p>Bonjour Mr WELE, je vous envoie vos présences et vous en souhaite une bonne réception.</p>
+]]></field>
+        </record>
+
     </data>
 </odoo>

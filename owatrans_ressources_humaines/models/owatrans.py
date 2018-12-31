@@ -30,6 +30,7 @@ class HrEmployee(models.Model):
     _inherit = 'hr.employee'
 
     firstname = fields.Char(string='Prénom')
+    card_number = fields.Integer(string='N° Carte', store=True)
     statut = fields.Char(string="Statut")
     categorie = fields.Many2one('owatrans_rh.categorie', string='Catégorie')
     remarques = fields.Text(string='Remarques')

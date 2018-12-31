@@ -35,6 +35,9 @@
         'data/fete_locale.xml', 
         'data/cron.xml',
         'views/owatrans_rh.xml',
+        'views/import_historique_pointage_views.xml',
+        'report/owatrans_rh_report.xml',
+        'report/presence_template.xml',
         'data/template_mail.xml',
         
     ],
